@@ -4,6 +4,6 @@ import { UserActionTypes } from "./UserActions";
 import { OtherAction } from "./OtherActions";
 
 export type AppActionTypes =
-	| CounterActionTypes
-	| UserActionTypes
+    | CounterActionTypes
+    | UserActionTypes
     | OtherAction;

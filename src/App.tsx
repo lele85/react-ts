@@ -13,10 +13,10 @@ const store = createStore<AppState>(appReducer, applyMiddleware(thunk));
 
 render(
     <Provider store={store}>
-		<div>
-			<User age={33} />
-			<Counter />
-		</div>
+        <div>
+            <User age={33} />
+            <Counter />
+        </div>
     </Provider>,
     document.getElementById("app")
 );

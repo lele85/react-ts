@@ -1,5 +1,5 @@
 export enum OtherActionsKeys {
-	OTHER_ACTION = "@@redux/OTHER_ACTION",
+    OTHER_ACTION = "@@redux/OTHER_ACTION",
 };
 
 export interface OtherAction {
