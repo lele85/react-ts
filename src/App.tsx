@@ -8,6 +8,7 @@ import Counter from './components/Counter';
 import User from './components/User';
 import { appReducer } from './reducer/appReducer';
 import { AppState } from './state/AppState';
+import Shows from './components/Shows';
 
 const store = createStore<AppState>(appReducer, applyMiddleware(thunk));
 
@@ -16,6 +17,7 @@ render(
         <div>
             <User age={33} />
             <Counter />
+            <Shows />
         </div>
     </Provider>,
     document.getElementById("app")

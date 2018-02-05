@@ -2,6 +2,10 @@ import { Dispatch } from 'redux';
 import Promise from 'ts-promise';
 import { OtherAction } from './OtherActions';
 
+export enum CounterActionsKeys {
+    INC = "@@counter/INC",
+    DEC = "@@counter/DEC",
+};
 
 interface CounterIncrementAction {
     type: CounterActionsKeys.INC,
@@ -11,11 +15,6 @@ interface CounterIncrementAction {
 interface CounterDecrementAction {
     type: CounterActionsKeys.DEC
     by: number
-};
-
-export enum CounterActionsKeys {
-    INC = "@@counter/INC",
-    DEC = "@@counter/DEC",
 };
 
 export type CounterActionTypes =
