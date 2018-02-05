@@ -1,10 +1,9 @@
 import React from 'react';
 import { StatelessComponent } from 'react';
-import { connect, Dispatch } from 'react-redux';
-import Promise from 'ts-promise';
+import { connect } from 'react-redux';
 
+import { counterDec, counterInc } from '../actions/CounterActions';
 import { AppState } from '../state/AppState';
-import { CounterActionTypes, counterIncrement, counterDecrement, counterIncrementAsync } from '../actions/CounterActions';
 
 interface OwnProps {};
 
@@ -14,33 +13,30 @@ interface StateProps {
 
 interface ActionProps {
     increment: (by: number) => void,
-    decrement: (by: number) => void,
-    incrementAsync: (by: number) => Promise<number>,
+    decrement: (by: number) => void
 };
 
 interface Props extends OwnProps, StateProps, ActionProps {};
 
-const mapStateToProps = (state:AppState) : StateProps => {
+const mapStateToProps = (state:AppState) => {
     return {
         counter: state.counter.value
     };
 }
 
-const mapActionsToProps = (dispatch: Dispatch<CounterActionTypes>) : ActionProps => {
+const mapActionsToProps = (dispatch : any) : ActionProps => {
     return {
-        increment: (by: number) : void => { dispatch(counterIncrement(by)); },
-        decrement: (by: number) : void => { dispatch(counterDecrement(by)); },
-        incrementAsync: (by: number) : Promise<number> => { return dispatch(counterIncrementAsync(by)); }
+        increment: (by: number) : void => { dispatch(counterInc({by:1})); },
+        decrement: (by: number) : void => { dispatch(counterDec({by:1})); }
     };
 }
 
-const Counter: StatelessComponent<Props> = ({counter, increment, decrement, incrementAsync}) => {
+const Counter: StatelessComponent<Props> = ({counter, increment, decrement}) => {
     return (
         <h1>
             <div>{counter}</div>
             <button onClick={() => { increment(1); }}>+1</button>
             <button onClick={() => { decrement(1); }}>-1</button>
-            <button onClick={() => { incrementAsync(5); }}>+5 (ASYNC)</button>
         </h1>
     );
 }

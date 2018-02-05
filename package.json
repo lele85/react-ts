@@ -26,6 +26,8 @@
     "ts-loader": "^3.4.0",
     "ts-promise": "^1.0.0",
     "typescript": "^2.7.1",
+    "typescript-fsa": "^2.5.0",
+    "typescript-fsa-reducers": "^0.4.5",
     "webpack": "^3.10.0",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-livereload-plugin": "^1.0.0"

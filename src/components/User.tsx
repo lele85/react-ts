@@ -3,7 +3,7 @@ import { StatelessComponent } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { UserActionTypes, userSetFirstname, userSetLastname } from '../actions/UserActions';
+import { userSetFirstname, userSetLastname } from '../actions/UserActions';
 import { AppState } from '../state/AppState';
 
 interface OwnProps {
@@ -29,10 +29,10 @@ const mapStateToProps = (state:AppState) : StateProps => {
     };
 };
 
-const mapActionsToProps = (dispatch: Dispatch<UserActionTypes>) : ActionProps => {
+const mapActionsToProps = (dispatch: any) : ActionProps => {
     return {
-        setFirstname: (firstname) => { dispatch(userSetFirstname(firstname)); },
-        setLasname: (lastname) => { dispatch(userSetLastname(lastname)); }
+        setFirstname: (firstname) => { dispatch(userSetFirstname({firstname})); },
+        setLasname: (lastname) => { dispatch(userSetLastname({lastname})); }
     };
 };
 
