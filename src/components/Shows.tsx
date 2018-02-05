@@ -2,9 +2,10 @@ import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { AppState, ApiActionStatus } from '../state/AppState';
+import { AppState } from '../state/AppState';
 import { Show } from '../model/Show';
 import { FetchShowsRequestActionTypes, fetchShows } from '../actions/ShowActions';
+import { ApiActionStatus } from '../state/FetchApiState';
 
 
 const mapStateToProps = (state: AppState) => {
@@ -62,4 +63,3 @@ class ShowsComponent extends Component<Props> {
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(ShowsComponent);
-

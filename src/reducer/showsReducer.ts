@@ -1,7 +1,7 @@
 import { ApiActionsKeys } from '../actions/ApiActions';
 import { FetchShowsRequestActionTypes } from '../actions/ShowActions';
 import { Show } from '../model/Show';
-import { ApiActionStatus, FetchApiState } from '../state/AppState';
+import { FetchApiState, ApiActionStatus } from '../state/FetchApiState';
 
 type ReducerState = FetchApiState<Array<Show>>;
 type ReducerActionTypes = FetchShowsRequestActionTypes;
