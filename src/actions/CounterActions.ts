@@ -1,5 +1,5 @@
 import actionCreatorFactory from 'typescript-fsa';
 
-const actionCreator = actionCreatorFactory();
-export const counterInc = actionCreator<{by: number}>('@@counter/INC');
-export const counterDec = actionCreator<{by: number}>('@@counter/DEC');
+const actionCreator = actionCreatorFactory("@@counter");
+export const counterInc = actionCreator<{by: number}>('INC');
+export const counterDec = actionCreator<{by: number}>('DEC');
