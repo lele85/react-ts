@@ -8,6 +8,6 @@ const INITIAL_STATE : UserState = {
     lastname: ""
 };
 
-export const userReducer = reducerWithInitialState(INITIAL_STATE)
+export const userReducer = reducerWithInitialState<UserState>(INITIAL_STATE)
     .case(userSetFirstname, (state, {firstname}) => ({...state, firstname:firstname}))
     .case(userSetLastname, (state, {lastname}) => ({...state, lastname:lastname}));
