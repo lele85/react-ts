@@ -41,8 +41,6 @@ class ShowsComponent extends Component<Props> {
 
     render() {
         const {status, model} = this.props;
-        console.debug(status);
-        console.debug(model);
 
         switch (status) {
             case ApiActionStatus.LOADING:

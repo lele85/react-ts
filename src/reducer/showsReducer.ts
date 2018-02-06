@@ -13,4 +13,4 @@ const INITIAL_STATE: FetchApiState<Show[]> = {
 export const showsReducer = reducerWithInitialState(INITIAL_STATE)
     .case(fetchShows.started, () => ({status: ApiActionStatus.LOADING, model:null}))
     .case(fetchShows.done, (state,{result}) => ({status: ApiActionStatus.SUCCESS, model:result}))
-    .case(fetchShows.started, () => ({status: ApiActionStatus.ERROR, model:null}))
+    .case(fetchShows.failed, () => ({status: ApiActionStatus.ERROR, model:null}))
