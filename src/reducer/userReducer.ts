@@ -1,25 +1,13 @@
-import { UserState } from '../state/UserState';
-import { isType } from 'typescript-fsa';
-import { Action } from 'redux';
-import { userSetFirstname, userSetLastname } from '../actions/UserActions';
+import { reducerWithInitialState } from 'typescript-fsa-reducers';
 
-const initialUserState : UserState = {
+import { userSetFirstname, userSetLastname } from '../actions/UserActions';
+import { UserState } from '../state/UserState';
+
+const INITIAL_STATE : UserState = {
     firstname : "",
     lastname: ""
 };
 
-export const userReducer = (state: UserState = initialUserState, action: Action): UserState => {
-    if (isType(action, userSetFirstname)) {
-        return {
-            ...state,
-            firstname: action.payload.firstname
-        };
-    }
-    if(isType(action, userSetLastname)) {
-        return {
-            ...state,
-            lastname: action.payload.lastname
-        };
-    }
-    return state;
-};
+export const userReducer = reducerWithInitialState(INITIAL_STATE)
+    .case(userSetFirstname, (state, {firstname}) => ({...state, firstname:firstname}))
+    .case(userSetLastname, (state, {lastname}) => ({...state, lastname:lastname}));
