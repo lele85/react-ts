@@ -3,4 +3,7 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
     "editor.detectIndentation": false,
+    "files.exclude": {
+        "node_modules/": true
+    }
 }
