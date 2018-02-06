@@ -1,10 +1,10 @@
 import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-import { AppState } from '../state/AppState';
+
+import { fetchShowsWorker } from '../actions/ShowActions';
 import { Show } from '../model/Show';
-import { FetchShowsRequestActionTypes, fetchShows } from '../actions/ShowActions';
+import { AppState } from '../state/AppState';
 import { ApiActionStatus } from '../state/FetchApiState';
 
 
@@ -15,9 +15,9 @@ const mapStateToProps = (state: AppState) => {
     };
 }
 
-const mapActionsToProps = (dispatch: Dispatch<FetchShowsRequestActionTypes>) : ActionProps => {
+const mapActionsToProps = (dispatch: any) : ActionProps => {
     return {
-        fetch: () => { dispatch(fetchShows()); }
+        fetch: () => { dispatch(fetchShowsWorker()); }
     };
 }
 
@@ -41,6 +41,8 @@ class ShowsComponent extends Component<Props> {
 
     render() {
         const {status, model} = this.props;
+        console.debug(status);
+        console.debug(model);
 
         switch (status) {
             case ApiActionStatus.LOADING:

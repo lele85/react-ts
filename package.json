@@ -28,6 +28,7 @@
     "typescript": "^2.7.1",
     "typescript-fsa": "^2.5.0",
     "typescript-fsa-reducers": "^0.4.5",
+    "typescript-fsa-redux-thunk": "^2.0.0-beta.6",
     "webpack": "^3.10.0",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-livereload-plugin": "^1.0.0"

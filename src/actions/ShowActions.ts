@@ -1,16 +1,23 @@
-import { ApiFetchRequestAction, ApiFetchSuccessAction, ApiFetchErrorAction, ApiActionsKeys, fetchApi } from "./ApiActions";
-import { ShowsParams, Show } from "../model/Show";
-import { OtherAction } from "./OtherActions";
-import { Dispatch } from "redux";
-import { get } from "../lib/Http";
+import actionCreatorFactory from 'typescript-fsa';
+import { bindThunkAction } from 'typescript-fsa-redux-thunk';
 
+import { get } from '../lib/Http';
+import { Show } from '../model/Show';
 
-export type FetchShowsRequestActionTypes =
-   | ApiFetchRequestAction<ShowsParams>
-   | ApiFetchSuccessAction<ShowsParams, Array<Show>>
-   | ApiFetchErrorAction<ShowsParams>
-   | OtherAction;
+const actionCreator = actionCreatorFactory("@@shows");
 
-export const fetchShows = () => {
-    return fetchApi<ShowsParams, Show[], FetchShowsRequestActionTypes>("/api/shows", {});
-};
+export const fetchShows = actionCreator.async<{},Show[],{code:number}>('FETCH');
+export const fetchShowsWorker = bindThunkAction(
+    fetchShows,
+    async (params, dispatch) => {
+        dispatch(fetchShows.started(params));
+        try {
+            const result = await get<Show[]>("/api/shows");
+            dispatch(fetchShows.done({params: params,result: result}));
+            return result;
+        } catch(e) {
+            dispatch(fetchShows.failed({params:params,error:{code:0}}));
+            return e;
+        }
+    }
+);
