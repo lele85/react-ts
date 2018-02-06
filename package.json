@@ -4,25 +4,32 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "watch": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/enzyme": "^3.1.8",
+    "@types/jest": "^22.1.1",
     "@types/react": "^16.0.36",
     "@types/react-dom": "^16.0.3",
     "@types/react-redux": "^5.0.14",
     "axios": "^0.17.1",
     "cache-loader": "^1.2.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "express": "^4.16.2",
     "fork-ts-checker-webpack-plugin": "^0.3.0",
+    "jest": "^22.1.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
+    "react-test-renderer": "^16.2.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "thread-loader": "^1.1.2",
+    "ts-jest": "^22.0.3",
     "ts-loader": "^3.4.0",
     "ts-promise": "^1.0.0",
     "typescript": "^2.7.1",
@@ -32,5 +39,23 @@
     "webpack": "^3.10.0",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-livereload-plugin": "^1.0.0"
-  }
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/test-adapter.js"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(_spec\\.tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "dependencies": {}
 }

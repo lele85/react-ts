@@ -33,7 +33,7 @@ const mapActionsToProps = (dispatch : Dispatch<AnyAction>) : ActionProps => {
     };
 }
 
-const Counter: StatelessComponent<Props> = ({counter, increment, decrement}) => {
+export const Counter: StatelessComponent<Props> = ({counter, increment, decrement}) => {
     return (
         <h1>
             <div>{counter}</div>
