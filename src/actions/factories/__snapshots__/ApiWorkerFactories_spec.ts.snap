@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fetchApiWorkerFactory should dispatch started then done in case of success 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "query": "123",
+    },
+    "type": "@@test/FETCH_STARTED",
+  },
+  Object {
+    "payload": Object {
+      "params": Object {
+        "query": "123",
+      },
+      "result": Object {
+        "value": 12,
+      },
+    },
+    "type": "@@test/FETCH_DONE",
+  },
+]
+`;
+
+exports[`fetchApiWorkerFactory should dispatch started then fail in case of error 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "query": "123",
+    },
+    "type": "@@test/FETCH_STARTED",
+  },
+  Object {
+    "error": true,
+    "payload": Object {
+      "error": Object {
+        "message": "Error!",
+      },
+      "params": Object {
+        "query": "123",
+      },
+    },
+    "type": "@@test/FETCH_FAILED",
+  },
+]
+`;
