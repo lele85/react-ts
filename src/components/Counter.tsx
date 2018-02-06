@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import { counterDec, counterInc } from '../actions/CounterActions';
 import { AppState } from '../state/AppState';
+import { Dispatch } from 'redux';
+import { AnyAction } from 'typescript-fsa';
 
 interface OwnProps {};
 
@@ -24,7 +26,7 @@ const mapStateToProps = (state:AppState) => {
     };
 }
 
-const mapActionsToProps = (dispatch : any) : ActionProps => {
+const mapActionsToProps = (dispatch : Dispatch<AnyAction>) : ActionProps => {
     return {
         increment: (by: number) : void => { dispatch(counterInc({by:1})); },
         decrement: (by: number) : void => { dispatch(counterDec({by:1})); }

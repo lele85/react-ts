@@ -5,6 +5,7 @@ import { Dispatch } from 'redux';
 
 import { userSetFirstname, userSetLastname } from '../actions/UserActions';
 import { AppState } from '../state/AppState';
+import { AnyAction } from 'typescript-fsa';
 
 interface OwnProps {
     age: number
@@ -29,7 +30,7 @@ const mapStateToProps = (state:AppState) : StateProps => {
     };
 };
 
-const mapActionsToProps = (dispatch: any) : ActionProps => {
+const mapActionsToProps = (dispatch: Dispatch<AnyAction>) : ActionProps => {
     return {
         setFirstname: (firstname) => { dispatch(userSetFirstname({firstname})); },
         setLasname: (lastname) => { dispatch(userSetLastname({lastname})); }

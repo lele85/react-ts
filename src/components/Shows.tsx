@@ -1,11 +1,12 @@
 import React from 'react';
 import { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
 
 import { fetchShowsWorker } from '../actions/ShowActions';
 import { Show } from '../model/Show';
 import { AppState } from '../state/AppState';
 import { ApiActionStatus } from '../state/FetchApiState';
+import { AnyAction } from 'typescript-fsa';
 
 
 const mapStateToProps = (state: AppState) => {
@@ -15,7 +16,7 @@ const mapStateToProps = (state: AppState) => {
     };
 }
 
-const mapActionsToProps = (dispatch: any) : ActionProps => {
+const mapActionsToProps = (dispatch: Dispatch<AnyAction>) : ActionProps => {
     return {
         fetch: () => { dispatch(fetchShowsWorker()); }
     };
