@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter Actions should be dispatched 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "by": 2,
+    },
+    "type": "@@counter/INC",
+  },
+  Object {
+    "payload": Object {
+      "by": 3,
+    },
+    "type": "@@counter/DEC",
+  },
+  Object {
+    "payload": Object {
+      "by": 10,
+    },
+    "type": "@@counter/INC",
+  },
+]
+`;

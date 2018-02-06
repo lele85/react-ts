@@ -49,6 +49,10 @@
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
+    "collectCoverageFrom": [
+        "src/**/*.{js,ts, tsx}",
+        "!**/node_modules/**"
+    ], 
     "testRegex": "(_spec\\.tsx?)$",
     "moduleFileExtensions": [
       "ts",
