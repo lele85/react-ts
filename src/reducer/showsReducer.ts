@@ -1,11 +1,11 @@
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
 
 import { fetchShows } from '../actions/ShowActions';
-import { Show } from '../model/Show';
 import { ApiActionStatus, FetchApiState } from '../state/FetchApiState';
+import { IShow } from '../model/IShow';
 
 
-const INITIAL_STATE: FetchApiState<Show[]> = {
+const INITIAL_STATE: FetchApiState<IShow[]> = {
     status: ApiActionStatus.LOADING,
     model: null
 };

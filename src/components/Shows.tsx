@@ -1,65 +1,67 @@
 import React from 'react';
 import { Component } from 'react';
-import { connect, Dispatch } from 'react-redux';
-
-import { fetchShowsWorker } from '../actions/ShowActions';
-import { Show } from '../model/Show';
-import { AppState } from '../state/AppState';
-import { ApiActionStatus } from '../state/FetchApiState';
+import { connect, Dispatch, StatelessComponent } from 'react-redux';
 import { AnyAction } from 'typescript-fsa';
 
+import { fetchShowsWorker } from '../actions/ShowActions';
+import { AppState } from '../state/AppState';
+import { ApiActionStatus, FetchApiState } from '../state/FetchApiState';
+import { Fetch } from './Fetch';
+import { IShow } from '../model/IShow';
+import { Show } from "./Show";
 
-const mapStateToProps = (state: AppState) => {
+interface StateProps { status: ApiActionStatus, model: Array<IShow> };
+interface ActionProps { fetch: (params: any) => void };
+interface Props extends StateProps, ActionProps {};
+
+const mapStateToProps = (state: AppState) : FetchApiState<IShow[]> => {
     return {
         status: state.shows.status,
         model: state.shows.model
     };
-}
+};
 
 const mapActionsToProps = (dispatch: Dispatch<AnyAction>) : ActionProps => {
     return {
         fetch: () => { dispatch(fetchShowsWorker()); }
     };
+};
+
+const SuccessComponent : StatelessComponent<{model: IShow[]}> = ({model}) => {
+    return (
+        <ul>
+            {model.map(show => <Show key={show.id} show={show} />)}
+        </ul>
+    )
+};
+
+const ErrorComponent = () => {
+    return <div>Error!</div>
 }
 
-interface StateProps {
-    status: ApiActionStatus
-    model: Array<Show>
+const LoadingComponent = () => {
+    return <div>Loading...</div>
 }
-
-interface ActionProps {
-    fetch: () => void
-}
-
-interface Props extends StateProps, ActionProps {};
 
 class ShowsComponent extends Component<Props> {
 
-    componentDidMount() {
-        const { fetch } = this.props;
-        fetch();
-    }
-
     render() {
-        const {status, model} = this.props;
+        const {
+            status,
+            model,
+            fetch
+        } = this.props;
 
-        switch (status) {
-            case ApiActionStatus.LOADING:
-                return <div>Loading...</div>;
-            case ApiActionStatus.ERROR:
-                return <div>Error!</div>;
-            case ApiActionStatus.SUCCESS:
-                return (
-                    <ul>
-                        {
-                            model.map((show) => {
-                                return <li key={show.id}>{show.title}</li>
-                            })
-                        }
-                    </ul>
-                );
-
-        }
+        return (
+            <Fetch
+                fetch={fetch}
+                fetchParams={{}}
+                fetchState={{status,model}}
+                SuccessElement={<SuccessComponent model={model} />}
+                ErrorElement={<ErrorComponent />}
+                LoadingElement={<LoadingComponent />}
+            />
+        );
     }
 }
 

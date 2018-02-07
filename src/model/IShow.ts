@@ -1,4 +1,4 @@
-export interface Show {
+export interface IShow {
     id: number,
     title: string
 };
