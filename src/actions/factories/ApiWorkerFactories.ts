@@ -6,7 +6,7 @@ export function fetchApiWorkerFactory<TParams, TResponse, TError> (asyncCreator 
     return bindThunkAction(
         asyncCreator,
         async (params, dispatch) => {
-            const result = await Http.get<TResponse>(path);
+            const result = await Http.get<TResponse, TParams>(path, params);
             return result;
         }
     )

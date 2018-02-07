@@ -1,9 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import { StatelessComponent } from "react";
-import { IShow } from "../model/IShow";
+import { ShowModelBase } from "../model/IShow";
 
-export const Show : StatelessComponent<{show: IShow}> = ({show}) => {
-    return (
-        <li>{show.title}</li>
-    );
+export class Show extends Component<{show: ShowModelBase}> {
+    
+    render() {
+        const { show } = this.props;
+        return (
+            <li>{show.title}</li>
+        );
+    }
 };

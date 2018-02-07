@@ -1,10 +1,14 @@
 import actionCreatorFactory from 'typescript-fsa';
 
-import { IShow } from '../model/IShow';
+import { ShowModelBase, ShowModelDetail } from '../model/IShow';
 import { fetchApiWorkerFactory } from './factories/ApiWorkerFactories';
 
 
-const actionCreator = actionCreatorFactory("@@shows");
+const showsActionCreator = actionCreatorFactory("@@shows");
+const showActionCreator = actionCreatorFactory("@@show");
 
-export const fetchShows = actionCreator.async<{},IShow[],{code:number}>('FETCH');
-export const fetchShowsWorker = fetchApiWorkerFactory<{},IShow[],{code:number}>(fetchShows, "/api/shows");
+export const fetchShows = showsActionCreator.async<{},ShowModelBase[],{code:number}>('FETCH');
+export const fetchShowsWorker = fetchApiWorkerFactory<{},ShowModelBase[],{code:number}>(fetchShows, "/api/shows");
+
+export const fetchShow = showActionCreator.async<{id:number},ShowModelDetail,{code:number}>('FETCH');
+export const fetchShowWorker = fetchApiWorkerFactory<{id:number},ShowModelDetail,{code:number}>(fetchShow, "/api/shows/:id");

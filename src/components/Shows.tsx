@@ -7,14 +7,14 @@ import { fetchShowsWorker } from '../actions/ShowActions';
 import { AppState } from '../state/AppState';
 import { ApiActionStatus, FetchApiState } from '../state/FetchApiState';
 import { Fetch } from './Fetch';
-import { IShow } from '../model/IShow';
+import { ShowModelBase } from '../model/IShow';
 import { Show } from "./Show";
 
-interface StateProps { status: ApiActionStatus, model: Array<IShow> };
+interface StateProps { status: ApiActionStatus, model: Array<ShowModelBase> };
 interface ActionProps { fetch: (params: any) => void };
 interface Props extends StateProps, ActionProps {};
 
-const mapStateToProps = (state: AppState) : FetchApiState<IShow[]> => {
+const mapStateToProps = (state: AppState) : FetchApiState<ShowModelBase[]> => {
     return {
         status: state.shows.status,
         model: state.shows.model
@@ -27,10 +27,14 @@ const mapActionsToProps = (dispatch: Dispatch<AnyAction>) : ActionProps => {
     };
 };
 
-const SuccessComponent : StatelessComponent<{model: IShow[]}> = ({model}) => {
+const SuccessComponent : StatelessComponent<{model: ShowModelBase[]}> = ({model}) => {
     return (
         <ul>
-            {model.map(show => <Show key={show.id} show={show} />)}
+            {
+                model.map((show) => {
+                    return <Show key={show.id} show={show} />;
+                })
+            }
         </ul>
     )
 };
