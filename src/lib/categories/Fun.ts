@@ -11,9 +11,3 @@ export let fun = <a,b>(f:(_:a) => b) : Fun<a,b> => ({
     then: function<c>(this:Fun<a,b>, g:Fun<b,c>) : Fun<a,c> { 
       return fun<a,c>((x) => g.f(this.f(x))) }
 });
-
-export let incr:Fun<number,number> = fun(x => x + 1);
-export let isEven:Fun<number,boolean> = fun(x => x % 2 ===0);
-export let not:Fun<boolean,boolean> = fun(x => !x);
-
-export let f:Fun<number,boolean> = incr.then(isEven).then(not);
