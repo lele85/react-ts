@@ -1,4 +1,4 @@
-import React from "React";
+import React from "react";
 import { StatelessComponent } from "react";
 import { IShow } from "../model/IShow";
 

@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Unknown
+    counter={0}
+    decrement={[Function]}
+    increment={[Function]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div>
+          0
+        </div>,
+        <button
+          onClick={[Function]}
+        >
+          +1
+        </button>,
+        <button
+          onClick={[Function]}
+        >
+          -1
+        </button>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": 0,
+        },
+        "ref": null,
+        "rendered": 0,
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "+1",
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": "+1",
+        "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "-1",
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": "-1",
+        "type": "button",
+      },
+    ],
+    "type": "h1",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div>
+            0
+          </div>,
+          <button
+            onClick={[Function]}
+          >
+            +1
+          </button>,
+          <button
+            onClick={[Function]}
+          >
+            -1
+          </button>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": 0,
+          },
+          "ref": null,
+          "rendered": 0,
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "+1",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "+1",
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "-1",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "-1",
+          "type": "button",
+        },
+      ],
+      "type": "h1",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
