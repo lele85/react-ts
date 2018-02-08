@@ -1,30 +1,30 @@
 import React from 'react';
 import { Component } from 'react';
 import { connect, Dispatch, StatelessComponent } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { AnyAction } from 'typescript-fsa';
 
 import { fetchShowsWorker } from '../actions/ShowActions';
-import { AppState } from '../state/AppState';
-import { ApiActionStatus, FetchApiState } from '../state/FetchApiState';
-import { Fetch } from './Fetch';
 import { ShowModelBase } from '../model/IShow';
-import { Show } from "./Show";
+import { AppState } from '../state/AppState';
+import { ApiActionStatus } from '../state/FetchApiState';
+import { Fetch } from './Fetch';
+import { Show } from './Show';
 
-interface StateProps { status: ApiActionStatus, model: Array<ShowModelBase> };
-interface ActionProps { fetch: (params: any) => void };
-interface Props extends StateProps, ActionProps {};
-
-const mapStateToProps = (state: AppState) : FetchApiState<ShowModelBase[]> => {
-    return {
-        status: state.shows.status,
-        model: state.shows.model
-    };
+const actionProps = {
+    fetch: fetchShowsWorker
 };
 
-const mapActionsToProps = (dispatch: Dispatch<AnyAction>) : ActionProps => {
-    return {
-        fetch: () => { dispatch(fetchShowsWorker()); }
-    };
+type StateProps = { status: ApiActionStatus, model: Array<ShowModelBase> };
+type ActionProps = typeof actionProps;
+type Props = StateProps & ActionProps;
+
+const mapStateToProps = (state: AppState) => {
+    return state.shows;
+};
+
+const mapActionsToProps = (dispatch: Dispatch<AnyAction>) => {
+    return bindActionCreators(actionProps, dispatch);
 };
 
 const SuccessComponent : StatelessComponent<{model: ShowModelBase[]}> = ({model}) => {
