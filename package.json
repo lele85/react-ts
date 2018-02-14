@@ -35,7 +35,7 @@
     "ts-loader": "^3.4.0",
     "ts-promise": "^1.0.0",
     "tslib": "^1.9.0",
-    "typescript": "^2.7.1",
+    "typescript": "^2.6.2",
     "typescript-fsa": "^2.5.0",
     "typescript-fsa-reducers": "^0.4.5",
     "typescript-fsa-redux-thunk": "^2.0.0-beta.6",
