@@ -1,48 +1,41 @@
 import React from 'react';
 import { StatelessComponent } from 'react';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import { AnyAction } from 'typescript-fsa';
+import { $call } from 'utility-types';
 
 import { userSetFirstname, userSetLastname } from '../actions/UserActions';
 import { AppState } from '../state/AppState';
-import { AnyAction } from 'typescript-fsa';
 
-interface OwnProps {
-    age: number
-};
 
-interface StateProps {
-    firstname: string,
-    lastname: string,
-};
-
-interface ActionProps {
-    setFirstname: (firstname: string) => void,
-    setLasname: (lastname: string) => void,
-};
-
-interface Props extends OwnProps, StateProps, ActionProps {};
-
-const mapStateToProps = (state:AppState) : StateProps => {
+const mapStateToProps = (state:AppState) => {
     return {
         firstname: state.user.firstname,
         lastname: state.user.lastname
     };
 };
 
-const mapActionsToProps = (dispatch: Dispatch<AnyAction>) : ActionProps => {
-    return {
-        setFirstname: (firstname) => { dispatch(userSetFirstname({firstname})); },
-        setLasname: (lastname) => { dispatch(userSetLastname({lastname})); }
-    };
+const mapActionsToProps = (dispatch: Dispatch<AnyAction>) => {
+    return bindActionCreators({
+        setFirstname: userSetFirstname,
+        setLasname: userSetLastname
+    }, dispatch);
 };
+
+const statePropsResult = $call(mapStateToProps);
+const actionPropsResult = $call(mapActionsToProps);
+type Props =
+    & { age: number }
+    & typeof statePropsResult
+    & typeof actionPropsResult;
 
 const User: StatelessComponent<Props> = ({firstname, lastname, age, setFirstname, setLasname}) => {
     return (
         <h1>
             Hello, {firstname} {lastname}! Your age is {age}!
-            <input type="text" value={firstname} onChange={({target:{value}}) => { setFirstname(value); }}/>
-            <input type="text" value={lastname} onChange={({target:{value}}) => { setLasname(value); }}/>
+            <input type="text" value={firstname} onChange={({target:{value}}) => { setFirstname({firstname: value}); }}/>
+            <input type="text" value={lastname} onChange={({target:{value}}) => { setLasname({lastname: value}); }}/>
         </h1>
     );
 };
