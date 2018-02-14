@@ -1,24 +1,13 @@
 import React from 'react';
 import { StatelessComponent } from 'react';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { bindActionCreators } from 'redux';
+import { AnyAction } from 'typescript-fsa';
+import { $call } from 'utility-types';
 
 import { counterDec, counterInc } from '../actions/CounterActions';
 import { AppState } from '../state/AppState';
-import { Dispatch } from 'redux';
-import { AnyAction } from 'typescript-fsa';
-
-interface OwnProps {};
-
-interface StateProps {
-    counter: number
-};
-
-interface ActionProps {
-    increment: (by: number) => void,
-    decrement: (by: number) => void
-};
-
-interface Props extends OwnProps, StateProps, ActionProps {};
 
 const mapStateToProps = (state:AppState) => {
     return {
@@ -26,19 +15,25 @@ const mapStateToProps = (state:AppState) => {
     };
 }
 
-const mapActionsToProps = (dispatch : Dispatch<AnyAction>) : ActionProps => {
-    return {
-        increment: (by: number) : void => { dispatch(counterInc({by:1})); },
-        decrement: (by: number) : void => { dispatch(counterDec({by:1})); }
-    };
+const mapActionsToProps = (dispatch : Dispatch<AnyAction>) => {
+    return bindActionCreators({
+        increment: counterInc,
+        decrement: counterDec
+    }, dispatch);
 }
+
+const returnOfActionProps = $call(mapActionsToProps);
+const returnOfStateProps = $call(mapStateToProps);
+type ActionProps = typeof returnOfActionProps;
+type StateProps = typeof returnOfStateProps;
+type Props = StateProps & ActionProps;
 
 export const Counter: StatelessComponent<Props> = ({counter, increment, decrement}) => {
     return (
         <h1>
             <div>{counter}</div>
-            <button onClick={() => { increment(1); }}>+1</button>
-            <button onClick={() => { decrement(1); }}>-1</button>
+            <button onClick={() => { increment({by:1}); }}>+1</button>
+            <button onClick={() => { decrement({by:1}); }}>-1</button>
         </h1>
     );
 }
