@@ -19,7 +19,7 @@ const mapStateToProps = (state:AppState) => {
 const mapActionsToProps = (dispatch: Dispatch<AnyAction>) => {
     return bindActionCreators({
         setFirstname: userSetFirstname,
-        setLasname: userSetLastname
+        setLastname: userSetLastname
     }, dispatch);
 };
 
@@ -30,12 +30,12 @@ type Props =
     & typeof statePropsResult
     & typeof actionPropsResult;
 
-const User: StatelessComponent<Props> = ({firstname, lastname, age, setFirstname, setLasname}) => {
+const User: StatelessComponent<Props> = ({firstname, lastname, age, setFirstname, setLastname}) => {
     return (
         <h1>
             Hello, {firstname} {lastname}! Your age is {age}!
             <input type="text" value={firstname} onChange={({target:{value}}) => { setFirstname({firstname: value}); }}/>
-            <input type="text" value={lastname} onChange={({target:{value}}) => { setLasname({lastname: value}); }}/>
+            <input type="text" value={lastname} onChange={({target:{value}}) => { setLastname({lastname: value}); }}/>
         </h1>
     );
 };
