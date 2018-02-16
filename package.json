@@ -18,10 +18,12 @@
     "@types/redux-mock-store": "0.0.13",
     "axios": "^0.17.1",
     "cache-loader": "^1.2.0",
+    "css-loader": "^0.28.9",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "express": "^4.16.2",
     "fork-ts-checker-webpack-plugin": "^0.3.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^22.1.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -30,6 +32,7 @@
     "redux": "^3.7.2",
     "redux-mock-store": "^1.5.1",
     "redux-thunk": "^2.2.0",
+    "style-loader": "^0.20.1",
     "thread-loader": "^1.1.2",
     "ts-jest": "^22.0.3",
     "ts-loader": "^3.4.0",
@@ -39,6 +42,7 @@
     "typescript-fsa": "^2.5.0",
     "typescript-fsa-reducers": "^0.4.5",
     "typescript-fsa-redux-thunk": "^2.0.0-beta.6",
+    "typings-for-css-modules-loader": "^1.7.0",
     "utility-types": "^1.0.0",
     "webpack": "^3.10.0",
     "webpack-dev-middleware": "^2.0.4",
@@ -63,7 +67,10 @@
       "jsx",
       "json",
       "node"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^.+\\.css$": "identity-obj-proxy"
+    }
   },
   "dependencies": {}
 }

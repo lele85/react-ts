@@ -24,6 +24,27 @@ module.exports = [
 		},
 		module: {
 			rules: [
+                {
+                    test: /\.css$/,
+                    exclude: [ /node_modules/ ],
+                    use: [
+                        {
+                            loader: 'style-loader'
+                        },
+                        {
+                            loader: 'typings-for-css-modules-loader',
+                            options: {
+                                sourceMap: true,
+                                importLoaders: 1,
+                                modules: true,
+                                camelCase: true,
+                                localIdentName: '[name]_[local]_[hash:base64:5]',
+                                minimize: false,
+                                namedExport: true
+                            }
+                        }
+                    ]
+                },
 				{
 					test: /\.tsx?$/,
 			        exclude: [ /node_modules/ ],
@@ -45,7 +66,7 @@ module.exports = [
 			                }
 			            }
 			        ]
-				}
+                },
 			]
 		},
 		plugins: [

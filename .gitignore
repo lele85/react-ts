@@ -2,3 +2,4 @@ node_modules
 .cache-loader
 .DS_Store
 npm-debug.log
+*.css.d.ts

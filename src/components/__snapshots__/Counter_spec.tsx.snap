@@ -36,6 +36,7 @@ ShallowWrapper {
           -1
         </button>,
       ],
+      "className": "counter",
     },
     "ref": null,
     "rendered": Array [
@@ -98,6 +99,7 @@ ShallowWrapper {
             -1
           </button>,
         ],
+        "className": "counter",
       },
       "ref": null,
       "rendered": Array [
