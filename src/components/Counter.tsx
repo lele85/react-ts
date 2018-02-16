@@ -1,8 +1,7 @@
 import React from 'react';
 import { StatelessComponent } from 'react';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
 import { AnyAction } from 'typescript-fsa';
 import { $call } from 'utility-types';
 

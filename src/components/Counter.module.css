@@ -1,5 +1,9 @@
+:export {
+    --counterColor: rgb(84, 82, 102);
+}
+
 .counter {
-    border: 2px solid red;
+    border: 2px solid --counterColor;
 }
 
 .blue {
