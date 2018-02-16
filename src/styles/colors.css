@@ -1,0 +1,7 @@
+:root {
+    --counter-color: rgb(32, 158, 70);
+}
+
+:export {
+    --counter-color: rgb(32, 158, 70);
+}

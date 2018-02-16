@@ -8,6 +8,7 @@ import { $call } from 'utility-types';
 import { counterDec, counterInc } from '../actions/CounterActions';
 import { AppState } from '../state/AppState';
 import styles from './Counter.module.css';
+import colors from '../styles/colors.css';
 
 const mapStateToProps = (state:AppState) => {
     return {
@@ -30,11 +31,28 @@ type Props = StateProps & ActionProps;
 
 export const Counter: StatelessComponent<Props> = ({counter, increment, decrement}) => {
     return (
-        <h1 className={styles.counter}>
-            <div>{counter}</div>
-            <button onClick={() => { increment({by:1}); }}>+1</button>
-            <button onClick={() => { decrement({by:1}); }}>-1</button>
-        </h1>
+        <div>
+            <h1 className={styles.counter}>
+                <div>{counter}</div>
+                <button onClick={() => { increment({by:1}); }}>+1</button>
+                <button onClick={() => { decrement({by:1}); }}>-1</button>
+            </h1>
+            <div>
+                Inline style with color
+                &nbsp;
+                <span
+                    style={{
+                        backgroundColor:colors.counterColor,
+                        color: "white"
+                    }}
+                >
+                    {colors.counterColor}
+                </span>
+                &nbsp;
+                taken from CSS variable.
+            </div>
+        </div>
+        
     );
 }
 
