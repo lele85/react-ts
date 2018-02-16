@@ -17,7 +17,7 @@ const mapStateToProps = (state: AppState) => {
 
 const mapActionsToProps = (dispatch: Dispatch<AnyAction>) => {
     return bindActionCreators({
-        fetch: fetchShowsWorker
+        fetchShows: fetchShowsWorker
     }, dispatch);
 };
 
@@ -55,12 +55,12 @@ class ShowsComponent extends Component<Props> {
         const {
             status,
             model,
-            fetch
+            fetchShows
         } = this.props;
 
         return (
             <Fetch
-                fetch={fetch}
+                fetch={fetchShows}
                 fetchParams={{}}
                 fetchState={{status,model}}
                 SuccessElement={<SuccessComponent model={model} />}

@@ -1,6 +1,10 @@
 import Axios from "axios";
 
-export function buildUri (url:string, params: any) {
+export type FetchParams = {
+    [key:string]: string | number
+};
+
+export function buildUri (url:string, params: FetchParams) {
     let remainingParams = {
         ...params
     };
@@ -24,7 +28,7 @@ export function buildUri (url:string, params: any) {
     };
 }
 
-function get<TResponse, TParams> (uriPlaceholder: string, allParams:TParams) : Promise<TResponse> {
+function get<TResponse, TParams extends FetchParams> (uriPlaceholder: string, allParams:TParams) : Promise<TResponse> {
     
     const {
         uri,

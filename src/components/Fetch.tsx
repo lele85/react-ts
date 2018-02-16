@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
 import { ApiActionStatus, FetchApiState } from '../state/FetchApiState';
+import { FetchParams } from '../lib/Http';
 
 export class Fetch extends Component
     <{
-        fetch:(params: any) => void,
-        fetchParams:any,
+        fetch: (params: FetchParams) => void,
+        fetchParams: FetchParams,
         fetchState: FetchApiState<any>,
         SuccessElement:JSX.Element,
         ErrorElement: JSX.Element,
