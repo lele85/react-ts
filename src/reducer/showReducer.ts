@@ -8,4 +8,4 @@ const INITIAL_STATE: FetchApiState<ShowModelDetail> = {
     model: null
 };
 
-export const showReducer = createFetchReducer<{id:number},ShowModelDetail,{code:number}>(INITIAL_STATE,fetchShow, fetchShowClear);
+export const showReducer = createFetchReducer<{id:number},ShowModelDetail ,{code:number}>(INITIAL_STATE, fetchShow, fetchShowClear);
