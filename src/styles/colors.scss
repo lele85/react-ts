@@ -1,0 +1,11 @@
+$accent_color: #ffc107;
+$error_color: #ff6666;
+$warning_color: #f69600;
+$info_color: #57b6f9;
+
+:export {
+    --accent-color: $accent_color;
+    --error_color: $error_color;
+    --warning_color: $warning_color;
+    --info_color: $info_color;
+}

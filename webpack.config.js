@@ -16,7 +16,7 @@ module.exports = [
 			filename: "[name].js"
 		},
 		resolve: {
-			extensions: [".tsx", ".ts", ".js"],
+			extensions: [".tsx", ".ts", ".js", ".json"],
 			modules: [
 				path.resolve(__dirname, "src"),
 				path.resolve(__dirname, "node_modules")
@@ -38,10 +38,35 @@ module.exports = [
                                 importLoaders: 1,
                                 modules: true,
                                 camelCase: true,
-                                localIdentName: '[name]_[local]_[hash:base64:5]',
+                                localIdentName: '[name]_[hash:base64:5]',
                                 minimize: false,
                                 namedExport: true
                             }
+                        },
+                    ]
+                },
+                {
+                    test: /\.scss$/,
+                    exclude: [ /node_modules/ ],
+                    use: [
+                        {
+                            loader: 'style-loader'
+                        },
+                        {
+                            loader: 'typings-for-css-modules-loader',
+                            options: {
+                                sourceMap: true,
+                                importLoaders: 1,
+                                modules: true,
+                                camelCase: true,
+                                localIdentName: '[name]_[hash:base64:5]',
+                                minimize: false,
+                                namedExport: true,
+                                sass: true
+                            }
+                        },
+                        {
+                            loader: 'sass-loader'
                         }
                     ]
                 },

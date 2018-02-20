@@ -1,9 +1,0 @@
-@import "../styles/colors.css";
-
-.counter {
-    border: 2px solid var(--counter-color);
-}
-
-.blue {
-    background: blue;
-}

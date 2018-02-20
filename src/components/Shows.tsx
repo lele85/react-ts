@@ -1,15 +1,22 @@
 import { Component } from 'react';
 import React from 'react';
-import { connect, Dispatch, StatelessComponent } from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { AnyAction } from 'typescript-fsa';
 import { $call } from 'utility-types';
 
 import { fetchShowsWorker } from '../actions/ShowActions';
-import { ShowModelBase } from '../model/IShow';
 import { AppState } from '../state/AppState';
 import { Fetch } from './Fetch';
-import { Show } from './Show';
+import { ShowsSuccess } from './ShowsSuccess';
+
+const ShowsError = () => {
+    return <div>Error!</div>
+}
+
+const ShowsLoading = () => {
+    return <div>Loading...</div>
+}
 
 const mapStateToProps = (state: AppState) => {
     return state.shows;
@@ -28,27 +35,6 @@ type StateProps = typeof returnOfStateProps;
 type ActionProps = typeof returnOfActionProps;
 type Props = StateProps & ActionProps;
 
-const SuccessComponent : StatelessComponent<{model: ShowModelBase[] | null}> = ({model}) => {
-    if (!model) { return null; }
-    return (
-        <ul>
-            {
-                model.map((show) => {
-                    return <Show key={show.id} show={show} />;
-                })
-            }
-        </ul>
-    )
-};
-
-const ErrorComponent = () => {
-    return <div>Error!</div>
-}
-
-const LoadingComponent = () => {
-    return <div>Loading...</div>
-}
-
 class ShowsComponent extends Component<Props> {
 
     render() {
@@ -63,9 +49,9 @@ class ShowsComponent extends Component<Props> {
                 fetch={fetchShows}
                 fetchParams={{}}
                 fetchState={{status,model}}
-                SuccessElement={<SuccessComponent model={model} />}
-                ErrorElement={<ErrorComponent />}
-                LoadingElement={<LoadingComponent />}
+                SuccessElement={<ShowsSuccess model={model} />}
+                ErrorElement={<ShowsError />}
+                LoadingElement={<ShowsLoading />}
             />
         );
     }

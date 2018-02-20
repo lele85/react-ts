@@ -21,10 +21,93 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": Array [
-        <h1
-          className="counter"
+      "children": <h1>
+        <div>
+          0
+        </div>
+        <button
+          onClick={[Function]}
         >
+          +1
+        </button>
+        <button
+          onClick={[Function]}
+        >
+          -1
+        </button>
+      </h1>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div>
+            0
+          </div>,
+          <button
+            onClick={[Function]}
+          >
+            +1
+          </button>,
+          <button
+            onClick={[Function]}
+          >
+            -1
+          </button>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": 0,
+          },
+          "ref": null,
+          "rendered": 0,
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "+1",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "+1",
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "-1",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "-1",
+          "type": "button",
+        },
+      ],
+      "type": "h1",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <h1>
           <div>
             0
           </div>
@@ -39,25 +122,9 @@ ShallowWrapper {
             -1
           </button>
         </h1>,
-        <div>
-          Inline style with color  
-          <span
-            style={
-              Object {
-                "backgroundColor": "counterColor",
-                "color": "white",
-              }
-            }
-          >
-            counterColor
-          </span>
-            taken from CSS variable.
-        </div>,
-      ],
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
+      },
+      "ref": null,
+      "rendered": Object {
         "instance": null,
         "key": undefined,
         "nodeType": "host",
@@ -77,7 +144,6 @@ ShallowWrapper {
               -1
             </button>,
           ],
-          "className": "counter",
         },
         "ref": null,
         "rendered": Array [
@@ -119,198 +185,6 @@ ShallowWrapper {
         ],
         "type": "h1",
       },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Inline style with color  ",
-            <span
-              style={
-                Object {
-                  "backgroundColor": "counterColor",
-                  "color": "white",
-                }
-              }
-            >
-              counterColor
-            </span>,
-            "  taken from CSS variable.",
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Inline style with color  ",
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "counterColor",
-              "style": Object {
-                "backgroundColor": "counterColor",
-                "color": "white",
-              },
-            },
-            "ref": null,
-            "rendered": "counterColor",
-            "type": "span",
-          },
-          "  taken from CSS variable.",
-        ],
-        "type": "div",
-      },
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <h1
-            className="counter"
-          >
-            <div>
-              0
-            </div>
-            <button
-              onClick={[Function]}
-            >
-              +1
-            </button>
-            <button
-              onClick={[Function]}
-            >
-              -1
-            </button>
-          </h1>,
-          <div>
-            Inline style with color  
-            <span
-              style={
-                Object {
-                  "backgroundColor": "counterColor",
-                  "color": "white",
-                }
-              }
-            >
-              counterColor
-            </span>
-              taken from CSS variable.
-          </div>,
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <div>
-                0
-              </div>,
-              <button
-                onClick={[Function]}
-              >
-                +1
-              </button>,
-              <button
-                onClick={[Function]}
-              >
-                -1
-              </button>,
-            ],
-            "className": "counter",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": 0,
-              },
-              "ref": null,
-              "rendered": 0,
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "+1",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": "+1",
-              "type": "button",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "-1",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": "-1",
-              "type": "button",
-            },
-          ],
-          "type": "h1",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Inline style with color  ",
-              <span
-                style={
-                  Object {
-                    "backgroundColor": "counterColor",
-                    "color": "white",
-                  }
-                }
-              >
-                counterColor
-              </span>,
-              "  taken from CSS variable.",
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Inline style with color  ",
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "counterColor",
-                "style": Object {
-                  "backgroundColor": "counterColor",
-                  "color": "white",
-                },
-              },
-              "ref": null,
-              "rendered": "counterColor",
-              "type": "span",
-            },
-            "  taken from CSS variable.",
-          ],
-          "type": "div",
-        },
-      ],
       "type": "div",
     },
   ],

@@ -9,8 +9,15 @@ import User from './components/User';
 import { appReducer } from './reducer/appReducer';
 import { AppState } from './state/AppState';
 import Shows from './components/Shows';
+import { createLogger } from 'redux-logger'
+import { TestStyle } from './components/TestStyle';
 
-const store = createStore<AppState>(appReducer, applyMiddleware(thunk));
+const logger = createLogger({
+    collapsed:true,
+    diff: true
+});
+
+const store = createStore<AppState>(appReducer, applyMiddleware(thunk, logger));
 
 render(
     <Provider store={store}>
@@ -18,6 +25,7 @@ render(
             <User age={33} />
             <Counter />
             <Shows />
+            <TestStyle />
         </div>
     </Provider>,
     document.getElementById("app")
