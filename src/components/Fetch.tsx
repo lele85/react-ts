@@ -1,21 +1,37 @@
+import { isEqual } from 'lodash';
 import React, { Component } from 'react';
 
-import { ApiActionStatus, FetchApiState } from '../state/FetchApiState';
 import { FetchParams } from '../lib/Http';
+import { ApiActionStatus, FetchApiState } from '../state/FetchApiState';
 
-export class Fetch extends Component
-    <{
-        fetch: (params: any) => void,
-        fetchParams: FetchParams,
-        fetchState: FetchApiState<any>,
-        SuccessElement:JSX.Element,
-        ErrorElement: JSX.Element,
-        LoadingElement: JSX.Element
-    }> {
+type Props = {
+    fetch: (params: any) => void,
+    fetchClear: (params:any) => void,
+    fetchParams: FetchParams,
+    fetchState: FetchApiState<any>,
+    SuccessElement:JSX.Element,
+    ErrorElement: JSX.Element,
+    LoadingElement: JSX.Element
+};
+export class Fetch extends Component<Props> {
 
     componentDidMount(){
-        const { fetch, fetchParams} = this.props;
+        const { fetch, fetchParams, fetchClear} = this.props;
+        fetchClear({});
         fetch(fetchParams);
+    }
+
+    componentWillReceiveProps({fetch, fetchParams: newFetchParams, fetchClear}:Props) {
+        const {fetchParams:oldFetchParams} = this.props;
+        if (!isEqual(newFetchParams, oldFetchParams)) {
+            fetchClear({});
+            fetch(newFetchParams);
+        }
+    }
+
+    componentWillUnmount() {
+        const { fetchClear } = this.props;
+        fetchClear({});
     }
 
     render(){

@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { AnyAction } from 'typescript-fsa';
 import { $call } from 'utility-types';
 
-import { fetchShowsWorker } from '../actions/ShowActions';
+import { fetchShowsClear, fetchShowsWorker } from '../actions/ShowActions';
 import { AppState } from '../state/AppState';
 import { Fetch } from './Fetch';
 import { ShowsSuccess } from './ShowsSuccess';
@@ -24,7 +24,8 @@ const mapStateToProps = (state: AppState) => {
 
 const mapActionsToProps = (dispatch: Dispatch<AnyAction>) => {
     return bindActionCreators({
-        fetchShows: fetchShowsWorker
+        fetchShows: fetchShowsWorker,
+        fetchShowsClear: fetchShowsClear
     }, dispatch);
 };
 
@@ -41,13 +42,15 @@ class ShowsComponent extends Component<Props> {
         const {
             status,
             model,
-            fetchShows
+            fetchShows,
+            fetchShowsClear
         } = this.props;
 
         return (
             <Fetch
                 fetch={fetchShows}
                 fetchParams={{}}
+                fetchClear={fetchShowsClear}
                 fetchState={{status,model}}
                 SuccessElement={<ShowsSuccess model={model} />}
                 ErrorElement={<ShowsError />}

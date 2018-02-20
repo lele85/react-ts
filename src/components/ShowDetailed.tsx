@@ -1,15 +1,13 @@
 import React, { StatelessComponent } from 'react';
-import { ShowModelBase, ShowModelDetail } from '../model/IShow';
-import { Fetch } from './Fetch';
-import { FetchApiState } from '../state/FetchApiState';
-import { AppState } from '../state/AppState';
-import { $call } from 'utility-types';
-import { fetchShowWorker } from '../actions/ShowActions';
-import { bindActionCreators } from 'redux';
-import { Dispatch } from 'redux';
-import { AnyAction } from 'typescript-fsa';
 import { connect } from 'react-redux';
-import { FetchParams } from '../lib/Http';
+import { bindActionCreators, Dispatch } from 'redux';
+import { AnyAction } from 'typescript-fsa';
+import { $call } from 'utility-types';
+
+import { fetchShowClear, fetchShowWorker } from '../actions/ShowActions';
+import { ShowModelDetail } from '../model/IShow';
+import { AppState } from '../state/AppState';
+import { Fetch } from './Fetch';
 
 const mapStateToProps = (state: AppState) => {
     return {
@@ -20,7 +18,8 @@ const mapStateToProps = (state: AppState) => {
 
 const mapActionsToProps = (dispatch: Dispatch<AnyAction>) => {
     return bindActionCreators({
-        fetchShow: fetchShowWorker
+        fetchShow: fetchShowWorker,
+        fetchShowClear: fetchShowClear
     }, dispatch);
 }
 
@@ -42,10 +41,11 @@ const ShowDetailedSuccess : StatelessComponent<{model: ShowModelDetail | null}> 
         </div>);
 }
 
-const ShowDetailed : StatelessComponent<Props> = ({showId, model, status, fetchShow}) => {
+const ShowDetailed : StatelessComponent<Props> = ({showId, model, status, fetchShow,fetchShowClear}) => {
     return (
         <Fetch
             fetch={fetchShow}
+            fetchClear={fetchShowClear}
             fetchParams={{id:showId}}
             fetchState={{model,status}}
             SuccessElement={<ShowDetailedSuccess model={model} />}

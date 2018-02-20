@@ -11,13 +11,23 @@ import { AppState } from './state/AppState';
 import Shows from './components/Shows';
 import { createLogger } from 'redux-logger'
 import { TestStyle } from './components/TestStyle';
+import { createTestMiddleware } from './middlewares/testMiddleware';
 
 const logger = createLogger({
     collapsed:true,
     diff: true
 });
 
-const store = createStore<AppState>(appReducer, applyMiddleware(thunk, logger));
+const testMiddleware : any = createTestMiddleware();
+
+const store = createStore<AppState>(
+    appReducer,
+    applyMiddleware(
+        thunk,
+        logger,
+        testMiddleware
+    )
+);
 
 render(
     <Provider store={store}>

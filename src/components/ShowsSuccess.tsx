@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import { ShowModelBase } from "../model/IShow";
-import { ShowSelector } from "./ShowSelector";
-import ShowDetailed from "./ShowDetailed";
-import { isNull } from "util";
+import React, { Component } from 'react';
+import { isNull } from 'util';
+
+import { ShowModelBase } from '../model/IShow';
+import ShowDetailed from './ShowDetailed';
+import { ShowSelector } from './ShowSelector';
 
 type ShowsSuccessProps = {model: ShowModelBase[] | null};
 type ShowsSuccessState = {selected: number | null};
