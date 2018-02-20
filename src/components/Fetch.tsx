@@ -5,7 +5,7 @@ import { FetchParams } from '../lib/Http';
 
 export class Fetch extends Component
     <{
-        fetch: (params: FetchParams) => void,
+        fetch: (params: any) => void,
         fetchParams: FetchParams,
         fetchState: FetchApiState<any>,
         SuccessElement:JSX.Element,

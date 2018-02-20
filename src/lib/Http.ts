@@ -1,4 +1,5 @@
 import Axios from "axios";
+import { isNullOrUndefined } from "util";
 
 export type FetchParams = {
     [key:string]: string | number
@@ -14,7 +15,7 @@ export function buildUri (url:string, params: FetchParams) {
             return token;
         }
         const key = token.substr(1);
-        if(params[key]){
+        if(!isNullOrUndefined(params[key])){
             delete remainingParams[key];
             return params[key];
 

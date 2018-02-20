@@ -36,7 +36,6 @@ export const Counter: StatelessComponent<Props> = ({counter, increment, decremen
                 <button onClick={() => { decrement({by:1}); }}>-1</button>
             </h1>
         </div>
-        
     );
 }
 

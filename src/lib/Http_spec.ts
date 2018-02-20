@@ -13,4 +13,8 @@ describe("buildUri", () => {
     it("should replace the placholder if there's a match and remove the bound param", () => {
         expect(buildUri("/foo/bar/:id", {id:12,q:"search"})).toEqual({uri:"/foo/bar/12", params:{q:"search"}});
     });
+
+    it("should replace the placeholedet with a match for value 0", () => {
+        expect(buildUri("/foo/bar/:id", {id:0,q:"search"})).toEqual({uri:"/foo/bar/0", params:{q:"search"}});
+    })
 });

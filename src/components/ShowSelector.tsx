@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { StatelessComponent } from "react";
 import { ShowModelBase } from "../model/IShow";
 
-export class Show extends Component<{
+export class ShowSelector extends Component<{
     show: ShowModelBase,
     onSelectShow: () => void
 }> {

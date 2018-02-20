@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { ShowModelBase } from "../model/IShow";
-import { Show } from "./Show";
+import { ShowSelector } from "./ShowSelector";
+import ShowDetailed from "./ShowDetailed";
+import { isNull } from "util";
 
 type ShowsSuccessProps = {model: ShowModelBase[] | null};
 type ShowsSuccessState = {selected: number | null};
@@ -30,12 +32,22 @@ export class ShowsSuccess extends Component<ShowsSuccessProps, ShowsSuccessState
                 <ul>
                     {
                         model.map((show) => {
-                            return <Show onSelectShow={this.onSelectShow.bind(this, show.id)} key={show.id} show={show} />;
+                            return (
+                                <ShowSelector
+                                    onSelectShow={this.onSelectShow.bind(this, show.id)}
+                                    key={show.id}
+                                    show={show}
+                                />
+                            );
                         })
                     }
                 </ul>
                 <div>
-                    {selected}
+                    {
+                        !isNull(selected) ?
+                            <ShowDetailed showId={selected} /> :
+                            "None"
+                    }
                 </div>
             </div>
         )

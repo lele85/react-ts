@@ -6,13 +6,13 @@ const app = express();
 
 const showsDetails = [
     {
-        image_url: "http://via.placeholder.com/200x200/92374D/ffffff"
+        image_url: "http://via.placeholder.com/200x200/ffc107/ffffff"
     },
     {
-        image_url: "http://via.placeholder.com/200x200/8C5383/ffffff"
+        image_url: "http://via.placeholder.com/200x200/ff6666/ffffff"
     },
     {
-        image_url: "http://via.placeholder.com/200x200/4A5899/ffffff"
+        image_url: "http://via.placeholder.com/200x200/57b6f9/ffffff"
     }
 ];
 
