@@ -1,18 +1,19 @@
-import Http from "./Http";
-import thunk from 'redux-thunk';
-import configureStore from 'redux-mock-store';
+import configureStore from "redux-mock-store";
+import thunk from "redux-thunk";
 
-export function mockGetSuccess<T>(result : T) {
+import Http from "./Http";
+
+export function mockGetSuccess<T>(result: T) {
     Http.get = jest.fn<T>(() => {
         return Promise.resolve(result);
     });
-};
+}
 
-export function mockGetError<T>(error : T) {
+export function mockGetError<T>(error: T) {
     Http.get = jest.fn<T>(() => {
         return Promise.reject(error);
     });
-};
+}
 
 export function createMockStore<T>(state: T) {
     const middlewares = [thunk];
@@ -20,6 +21,6 @@ export function createMockStore<T>(state: T) {
     return mockStore(state);
 }
 
-export function assertEquals<T> (result : T, expected: T) {
+export function assertEquals<T>(result: T, expected: T) {
     return expect(result).toEqual(expected);
 }

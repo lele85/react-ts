@@ -1,28 +1,27 @@
-import { isEqual } from 'lodash';
-import React, { Component } from 'react';
+import { isEqual } from "lodash";
+import React, { Component } from "react";
 
-import { FetchParams } from '../lib/Http';
-import { ApiActionStatus, FetchApiState } from '../state/FetchApiState';
+import { FetchParams } from "../lib/Http";
+import { ApiActionStatus, FetchApiState } from "../state/FetchApiState";
 
 type Props = {
-    fetch: (params: any) => void,
-    fetchClear: (params:any) => void,
-    fetchParams: FetchParams,
-    fetchState: FetchApiState<any>,
-    SuccessElement:JSX.Element,
-    ErrorElement: JSX.Element,
-    LoadingElement: JSX.Element
+    fetch: (params: any) => void;
+    fetchClear: (params: any) => void;
+    fetchParams: FetchParams;
+    fetchState: FetchApiState<any>;
+    SuccessElement: JSX.Element;
+    ErrorElement: JSX.Element;
+    LoadingElement: JSX.Element;
 };
 export class Fetch extends Component<Props> {
-
-    componentDidMount(){
-        const { fetch, fetchParams, fetchClear} = this.props;
+    componentDidMount() {
+        const { fetch, fetchParams, fetchClear } = this.props;
         fetchClear({});
         fetch(fetchParams);
     }
 
-    componentWillReceiveProps({fetch, fetchParams: newFetchParams, fetchClear}:Props) {
-        const {fetchParams:oldFetchParams} = this.props;
+    componentWillReceiveProps({ fetch, fetchParams: newFetchParams, fetchClear }: Props) {
+        const { fetchParams: oldFetchParams } = this.props;
         if (!isEqual(newFetchParams, oldFetchParams)) {
             fetchClear({});
             fetch(newFetchParams);
@@ -34,13 +33,8 @@ export class Fetch extends Component<Props> {
         fetchClear({});
     }
 
-    render(){
-        const {
-            LoadingElement,
-            SuccessElement,
-            ErrorElement,
-            fetchState
-        } = this.props
+    render() {
+        const { LoadingElement, SuccessElement, ErrorElement, fetchState } = this.props;
         //Fetch request is running
         if (fetchState.status === ApiActionStatus.LOADING) {
             return LoadingElement;
@@ -55,4 +49,4 @@ export class Fetch extends Component<Props> {
         }
         return null;
     }
-};
+}

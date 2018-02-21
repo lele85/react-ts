@@ -1,4 +1,4 @@
 export interface UserState {
-    readonly firstname: string,
-    readonly lastname: string
+    readonly firstname: string;
+    readonly lastname: string;
 }

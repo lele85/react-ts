@@ -1,3 +1,3 @@
 export interface CounterState {
-    readonly value : number
-};
+    readonly value: number;
+}

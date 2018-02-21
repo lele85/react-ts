@@ -1,17 +1,16 @@
-import { actionCreatorFactory } from 'typescript-fsa';
-import Http from '../../lib/Http';
-import { fetchApiWorkerFactory } from './ApiWorkerFactories';
-import { createMockStore, mockGetSuccess, mockGetError } from '../../lib/TestUtils';
-import { AbortTokens } from '../ShowActions';
+import { actionCreatorFactory } from "typescript-fsa";
+import Http from "../../lib/Http";
+import { fetchApiWorkerFactory } from "./ApiWorkerFactories";
+import { createMockStore, mockGetSuccess, mockGetError } from "../../lib/TestUtils";
+import { AbortTokens } from "../ShowActions";
 
 describe("fetchApiWorkerFactory", () => {
-
     type State = {};
     type Params = { query: string };
     type Response = { value: number };
     type Error = { message: string };
 
-    // it("should dispatch started then done in case of success", async () => { 
+    // it("should dispatch started then done in case of success", async () => {
     //     const store = createMockStore<State>({});
     //     mockGetSuccess<Response>({value:12});
     //     const actionCreator = actionCreatorFactory("@@test");
